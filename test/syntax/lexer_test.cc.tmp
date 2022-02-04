@@ -1,0 +1,12 @@
+#include "syntax/lexer.hh"
+
+#include <gtest/gtest.h>
+
+#include "syntax/misc.hh"
+
+TEST(TestLexer, test_scan) {
+    auto token_map = syntax::getTokenMap();
+    for (auto [str, tok] : token_map) {
+        auto lexer = syntax::NewScanner(str);
+    }
+}
