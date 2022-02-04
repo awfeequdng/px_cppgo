@@ -75,7 +75,7 @@ typedef uint64_t token;
 #define _xx (1 << (tokenCount - 1))
 
 // contains reports whether tok is in tokset.
-// inline bool contains(uint64_t tokset, uint64_t tok) { return (tokset & (1 << tok)) != 0; }
+inline bool contains(uint64_t tokset, uint64_t tok) { return (tokset & (1 << tok)) != 0; }
 
 typedef uint8_t LitKind;
 

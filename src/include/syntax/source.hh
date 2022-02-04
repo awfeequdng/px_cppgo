@@ -9,9 +9,6 @@
 #include <tuple>
 #include <fstream>
 
-#define panic(a)    { std::cout << (a) << std::endl; exit(0); } while(0)
-#define nil 0
-
 template <typename T>
 std::vector<T> slice(std::vector<T>& v, std::size_t low, std::size_t high = -1) {
     std::vector<T> vec;

@@ -69,6 +69,10 @@ bool rune_t::is_alnum() const { return is_alpha() || is_digit(); }
 
 rune_t::operator char() const { return static_cast<char>(_value); }
 
+// rune_t::operator int() const { return static_cast<int>(_value); }
+
+rune_t::operator uint32_t() const { return static_cast<uint32_t>(_value); }
+
 bool rune_t::is_invalid() const { return _value == rune_invalid._value; }
 
 bool rune_t::is_errored() const { return is_eof() || is_invalid(); }
@@ -128,10 +132,34 @@ bool rune_t::operator>(const rune_t &rhs) const { return _value > rhs._value; }
 
 bool rune_t::operator>=(const rune_t &rhs) const { return _value >= rhs._value; }
 
+rune_t rune_t::operator|(const rune_t &rhs) const {
+    auto val = _value;
+    val |= rhs._value;
+    return val;
+}
+
 std::ostream &operator<<(std::ostream &os, const rune_t &rune) {
     auto encode_result = encode(rune);
     for (size_t j = 0; j < encode_result.width; j++) os << static_cast<char>(encode_result.data[j]);
     return os;
+}
+
+rune_t operator|(int lhs, const rune_t &rhs) {
+    auto val = lhs;
+    val |= rhs._value;
+    return val;
+}
+bool operator<(char lhs, const rune_t &rhs) {
+    return lhs < rhs._value;
+}
+bool operator>(char lhs, const rune_t &rhs) {
+    return lhs > rhs._value;
+}
+bool operator<=(char lhs, const rune_t &rhs) {
+    return lhs < rhs._value;
+}
+bool operator>=(char lhs, const rune_t &rhs) {
+    return lhs > rhs._value;
 }
 
 ///////////////////////////////////////////////////////////////////////////

@@ -1,5 +1,6 @@
 #pragma once
 #include "tokens.hh"
+#include "common/types.hh"
 
 #include <string>
 namespace syntax

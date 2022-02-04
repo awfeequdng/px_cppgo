@@ -20,7 +20,7 @@ struct rune_t final {
     explicit constexpr rune_t(int32_t value) : _value(value) {}
 
     // todo: this version of constructor is just for convenient
-    constexpr rune_t(unsigned char value) : _value(value) {}
+    explicit constexpr rune_t(unsigned char value) : _value(value) {}
     //    explicit constexpr rune_t(char value) : _value(value) {}
 
     constexpr rune_t(const rune_t &rhs) : _value(rhs._value) {}
@@ -30,6 +30,13 @@ struct rune_t final {
     rune_t &operator=(char rhs);
 
     explicit operator char() const;
+
+    // explicit operator int() const;
+
+    explicit operator int32_t() const;
+
+    // explicit operator uint32_t() const;
+    operator uint32_t() const;
 
     bool operator==(char rhs) const;
 
@@ -47,7 +54,6 @@ struct rune_t final {
 
     [[nodiscard]] bool is_bom() const;
 
-    explicit operator int32_t() const;
 
     [[nodiscard]] bool is_digit() const;
 
@@ -79,11 +85,24 @@ struct rune_t final {
 
     bool operator!=(const rune_t &rhs) const;
 
+    rune_t operator | (const rune_t &rhs) const;
+
+    friend rune_t operator|(int lhs, const rune_t &rhs);
+    friend bool operator<(char lhs, const rune_t &rhs);
+    friend bool operator>(char lhs, const rune_t &rhs);
+    friend bool operator<=(char lhs, const rune_t &rhs);
+    friend bool operator>=(char lhs, const rune_t &rhs);
 private:
     int32_t _value = 0xfffd;
 };
 
 std::ostream &operator<<(std::ostream &os, const rune_t &rune);
+
+rune_t operator|(int lhs, const rune_t &rhs);
+bool operator<(char lhs, const rune_t &rhs);
+bool operator>(char lhs, const rune_t &rhs);
+bool operator<=(char lhs, const rune_t &rhs);
+bool operator>=(char lhs, const rune_t &rhs);
 
 struct rune_hash_t {
     std::size_t operator()(const rune_t &rune) const noexcept { return static_cast<std::size_t>(rune); }
@@ -96,6 +115,7 @@ static constexpr rune_t rune_max = rune_t(0x0010ffff);
 static constexpr rune_t rune_bom = rune_t(0xfeff);
 static constexpr rune_t rune_eof = rune_t(-1);
 static constexpr int int_rune_invalid = 0xfffd;
+static constexpr rune_t rune_self = rune_t(0x80);
 
 static inline const uint8_t s_utf8_first[256] = {
     0xf0, 0xf0, 0xf0, 0xf0, 0xf0, 0xf0, 0xf0, 0xf0, 0xf0, 0xf0, 0xf0, 0xf0, 0xf0, 0xf0, 0xf0, 0xf0,  // 0x00-0x0F
