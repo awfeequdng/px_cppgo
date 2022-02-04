@@ -86,37 +86,36 @@ typedef uint8_t LitKind;
 #define StringLit 4
 
 typedef uint32_t Operator;
-
 // #define _ 0
 // Def is the : in :=
-#define Def 1       // :
-#define Not 2       // !
-#define Recv 3      // <-
-#define Tilde 4     // ~
+#define Operator_Def 1       // :
+#define Operator_Not 2       // !
+#define Operator_Recv 3      // <-
+#define Operator_Tilde 4     // ~
 // precOrOr
-#define OrOr 5      // ||
+#define Operator_OrOr 5      // ||
 // precAndAnd
-#define AndAnd 6    // &&
+#define Operator_AndAnd 6    // &&
 // precCmp
-#define Eql 7       // ==
-#define Neq 8       // !=
-#define Lss 9       // <
-#define Leq 10      // <=
-#define Gtr 11      // >
-#define Geq 12      // >=
+#define Operator_Eql 7       // ==
+#define Operator_Neq 8       // !=
+#define Operator_Lss 9       // <
+#define Operator_Leq 10      // <=
+#define Operator_Gtr 11      // >
+#define Operator_Geq 12      // >=
 // precAdd
-#define Add 13      // +
-#define Sub 14      // -
-#define Or 15       // |
-#define Xor 16      // ^
+#define Operator_Add 13      // +
+#define Operator_Sub 14      // -
+#define Operator_Or 15       // |
+#define Operator_Xor 16      // ^
 // precMul
-#define Mul 17      // *
-#define Div 18      // /
-#define Rem 19      // %
-#define And 20      // &
-#define AndNot 21   // &^
-#define Shl 22      // <<
-#define Shr 23      // >>
+#define Operator_Mul 17      // *
+#define Operator_Div 18      // /
+#define Operator_Rem 19      // %
+#define Operator_And 20      // &
+#define Operator_AndNot 21   // &^
+#define Operator_Shl 22      // <<
+#define Operator_Shr 23      // >>
 
 // Operator precedences
 // #define _ 0
