@@ -8,74 +8,74 @@ typedef uint64_t token;
 
 // type token
 // #define _ 0
-#define _EOF 1
+#define Token_EOF 1
 // names and literals
-#define _Name 2
-#define _Literal 3
+#define Token_Name 2
+#define Token_Literal 3
 // operators and operations
-// _Operator is excluding '*' (_Star)
-#define _Operator 4
-#define _AssignOp 5
-#define _IncOp 6
-#define _Assign 7
-#define _Define 8
-#define _Arrow 9
-#define _Star 10
+// Token_Operator is excluding '*' (Token_Star)
+#define Token_Operator 4
+#define Token_AssignOp 5
+#define Token_IncOp 6
+#define Token_Assign 7
+#define Token_Define 8
+#define Token_Arrow 9
+#define Token_Star 10
 // delimiters
-#define _Lparen 11
-#define _Lbrack 12
-#define _Lbrace 13
-#define _Rparen 14
-#define _Rbrack 15
-#define _Rbrace 16
-#define _Comma 17
-#define _Semi 18
-#define _Colon 19
-#define _Dot 20
-#define _DotDotDot 21
+#define Token_Lparen 11
+#define Token_Lbrack 12
+#define Token_Lbrace 13
+#define Token_Rparen 14
+#define Token_Rbrack 15
+#define Token_Rbrace 16
+#define Token_Comma 17
+#define Token_Semi 18
+#define Token_Colon 19
+#define Token_Dot 20
+#define Token_DotDotDot 21
 // keywords
-#define _Break 22
-#define _Case 23
-#define _Chan 24
-#define _Const 25
-#define _Continue 26
-#define _Default 27
-#define _Defer 28
-#define _Else 29
-#define _Fallthrough 30
-#define _For 31
-#define _Func 32
-#define _Go 33
-#define _Goto 34
-#define _If 35
-#define _Import 36
-#define _Interface 37
-#define _Map 38
-#define _Package 39
-#define _Range 40
-#define _Return 41
-#define _Select 42
-#define _Struct 43
-#define _Switch 44
-#define _Type 45
-#define _Var 46
+#define Token_Break 22
+#define Token_Case 23
+#define Token_Chan 24
+#define Token_Const 25
+#define Token_Continue 26
+#define Token_Default 27
+#define Token_Defer 28
+#define Token_Else 29
+#define Token_Fallthrough 30
+#define Token_For 31
+#define Token_Func 32
+#define Token_Go 33
+#define Token_Goto 34
+#define Token_If 35
+#define Token_Import 36
+#define Token_Interface 37
+#define Token_Map 38
+#define Token_Package 39
+#define Token_Range 40
+#define Token_Return 41
+#define Token_Select 42
+#define Token_Struct 43
+#define Token_Switch 44
+#define Token_Type 45
+#define Token_Var 46
 #define tokenCount 47
 
 // for BranchStmt
-#define Break _Break
-#define Continue _Continue
-#define Fallthrough _Fallthrough
-#define Goto _Goto
+#define Break Token_Break
+#define Continue Token_Continue
+#define Fallthrough Token_Fallthrough
+#define Goto Token_Goto
 
 // for CallStmt
-#define Go _Go
-#define Defer _Defer
+#define Go Token_Go
+#define Defer Token_Defer
 
 // Make sure we have at most 64 tokens so we can use them in a set.
 #define _xx (1 << (tokenCount - 1))
 
 // contains reports whether tok is in tokset.
-inline bool contains(uint64_t tokset, token tok) { return tokset & (1 << tok) != 0; }
+// inline bool contains(uint64_t tokset, uint64_t tok) { return (tokset & (1 << tok)) != 0; }
 
 typedef uint8_t LitKind;
 
