@@ -97,7 +97,7 @@ int64_t nextSize(int64_t size) {
             if (_ch < sentinel) {
                 _r++;
                 _chw = 1;
-                if (_ch == 0) {
+                if (_ch == '\0') {
                     error("invalid NUL character");
                     goto redo;
                 }
@@ -118,7 +118,7 @@ int64_t nextSize(int64_t size) {
             if (!_ifs.eof()) {
                 error("I/O error: ");
             }
-            _ch = -1;
+            _ch = common::utf8::rune_eof;
             _chw = 0;
             return;
         }

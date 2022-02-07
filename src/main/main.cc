@@ -20,7 +20,7 @@ void test_source() {
     syntax::source source;
     source.init("test.cc", nullptr);
     int cnt = 0;
-    while (source._ch != -1) {
+    while (source._ch != common::utf8::rune_eof) {
         cnt++;
         source.nextch();
         std::cout << "\t: " << source._ch << std::endl;

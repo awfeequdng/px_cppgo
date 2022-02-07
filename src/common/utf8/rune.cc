@@ -135,7 +135,7 @@ bool rune_t::operator>=(const rune_t &rhs) const { return _value >= rhs._value; 
 rune_t rune_t::operator|(const rune_t &rhs) const {
     auto val = _value;
     val |= rhs._value;
-    return val;
+    return rune_t(val);
 }
 
 std::ostream &operator<<(std::ostream &os, const rune_t &rune) {
@@ -147,7 +147,7 @@ std::ostream &operator<<(std::ostream &os, const rune_t &rune) {
 rune_t operator|(int lhs, const rune_t &rhs) {
     auto val = lhs;
     val |= rhs._value;
-    return val;
+    return rune_t(val);
 }
 bool operator<(char lhs, const rune_t &rhs) {
     return lhs < rhs._value;

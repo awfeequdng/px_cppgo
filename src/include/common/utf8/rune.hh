@@ -54,7 +54,6 @@ struct rune_t final {
 
     [[nodiscard]] bool is_bom() const;
 
-
     [[nodiscard]] bool is_digit() const;
 
     [[nodiscard]] bool is_alpha() const;
